@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+    <import resource="mongo-config.xml"/>
+    <import resource="orm-config.xml"/>
+    <import resource="utils-config.xml"/>
+    <import resource="services-config.xml"/>
+
+    <bean id="metadataRepo" class="ru.family.core.metamodel.impl.MetadataRepositoryImpl"/>
+
+    <bean id="metamodelManager" class="ru.family.core.metamodel.impl.EntityMetamodelManagerImpl">
+        <property name="entityMetadataRepo" ref="metadataRepo"/>
+    </bean>
+
+    <bean id="modelFactory" class="ru.family.core.model.creation.MongoBasedModelHelper">
+        <property name="idGenerator" ref="idGenerator"/>
+    </bean>
+
+    <context:annotation-config/>
+</beans>

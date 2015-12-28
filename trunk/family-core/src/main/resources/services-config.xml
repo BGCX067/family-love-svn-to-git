@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="modification-config.xml"/>
+
+    <bean id="registrationService" class="ru.family.core.service.impl.RegistrationServiceImpl"/>
+
+    <bean id="securityService" class="ru.family.core.service.impl.SecurityServiceImpl"/>
+
+    <bean id="familyService" class="ru.family.core.service.impl.FamilyServiceImpl"/>
+
+    <bean id="genericModificationService" class="ru.family.core.service.impl.GenericModificationService"/>
+</beans>
